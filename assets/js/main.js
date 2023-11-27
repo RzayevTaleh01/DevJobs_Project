@@ -59,6 +59,15 @@ function getCurrentUrl() {
 window.onload = function () {
 
     let pageName = getCurrentUrl();
+    let pageTheme = localStorage.getItem('theme');
+
+    if(pageTheme=='dark'){
+        body.classList.add('dark');
+        theme.checked=true;
+    }
+
+
+
     if (pageName.pageName == 'index.html') {
         getData(data);
     }
@@ -111,19 +120,19 @@ function search(searchTerm, searchBy, data) {
 }
 
 
-jobsHead.addEventListener('keyup', (e) => {
+jobsHead?.addEventListener('keyup', (e) => {
     result = search(e.target.value, "head", data);
     getData(result)
 })
 
 
-jobsLocation.addEventListener('keyup', (e) => {
+jobsLocation?.addEventListener('keyup', (e) => {
     result = search(e.target.value, "location", result);
     getData(result)
 })
 
 
-jobsType.addEventListener('click', (e) => {
+jobsType?.addEventListener('click', (e) => {
     if (e.target.checked) {
         result = search("Full Time", "time_type", result);
         getData(result)
@@ -133,14 +142,16 @@ jobsType.addEventListener('click', (e) => {
     }
 })
 
-theme.addEventListener('click', (e) => {
+theme?.addEventListener('click', (e) => {
+
     if (e.target.checked) {
         console.log('dfg');
-        body.classList.add('dark')
         localStorage.setItem('theme','dark')
     }
     else {
-        body.classList.remove('dark')
         localStorage.setItem('theme','light')
     }
+
+    body.classList.toggle('dark')
+
 })
