@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJobs App - MasterCode (Real World Project)</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/fonts/mastercode-icon/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-assistant navbar-svg-1">
+            <img src="./assets/img/nav-svg-1.svg" alt="">
+        </div>
+        <div class="navbar-assistant navbar-svg-2">
+            <img src="./assets/img/nav-svg-2.svg" alt="">
+        </div>
+        <div class="navbar-assistant navbar-svg-3">
+            <img src="./assets/img/nav-svg-3.svg" alt="">
+        </div>
+        <div class="container">
+            <div class="nav-block">
+                <div class="nav-block_logo">
+                    <img src="./assets/img/devjobs.svg" alt="">
+                </div>
+                <div class="nav-block_switch">
+                    <label for="theme-check">
+                        <span class="m-light"></span>
+                    </label>
+                    <input id="theme-check" class="nav-block_check" type="checkbox">
+                    <label for="theme-check">
+                        <span class="m-dark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="widget">
+        <div class="container">
+            <div class="widget-block">
+                <form action="#" class="widget-form">
+                    <div class="widget-form_group">
+                        <label for="jobs-head">
+                            <span class="m-search"></span>
+                            <input id="jobs-head" class="widget-form_input" type="text"
+                                placeholder="Filter by title, companies, expertise…">
+                        </label>
+                    </div>
+                    <div class="widget-form_group"> <label for="jobs-location">
+                            <span class="m-location"></span>
+                            <input id="jobs-location" class="widget-form_input" type="text"
+                                placeholder="Filter by location…">
+                        </label></div>
+
+
+                    <div class="widget-form_group">
+                        <label for="jobs-type">
+                            <input id="jobs-type" class="widget-form_check" type="checkbox">
+                            <span class="widget-form_check-type">Full Time Only</span>
+                        </label>
+                        <button type="submit" class="button button-primary">Search</button>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="jobs">
+        <div class="container">
+            <div class="jobs-block">
+                <div class="jobs-item">
+                    <div class="jobs-item_img">
+                        <img src="./assets/img/jobs-1.svg" alt="">
+                    </div>
+                    <div class="jobs-item_body">
+                        <div class="jobs-item_info">
+                            <p>20h ago</p>
+                            <p>Full Time</p>
+                        </div>
+                        <a href="/inner.html" class="jobs-item_head">
+                            Haskell and PureScript Dev
+                        </a>
+                        <div class="jobs-item_company">
+                            Blogr
+                        </div>
+                    </div>
+                    <div class="jobs-item_footer">
+                        <p class="jobs-item_location">United States</p>
+                    </div>
+                </div>
+            </div>
+            <div class="jobs-footer">
+                <button class="button button-primary">
+                    Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/main.js">
+    </script>
+</body>
+
+</html>

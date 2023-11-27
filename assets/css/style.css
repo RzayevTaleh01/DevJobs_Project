@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+body {
+    background: #F4F6F8;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+body.dark {
+    background: #121721;
+}
+
+/* buttons */
+
+.button {
+    padding: 16px 36px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.button-primary {
+    background: #5964E0;
+}
+
+/* Navbar */
+
+.navbar {
+    padding-top: 44px;
+    padding-bottom: 84px;
+    border-radius: 0px 0px 0px 100px;
+    background: #5964E0;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-block_check {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #fff;
+    outline: none;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.nav-block_check::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #939BF4;
+    position: absolute;
+    top: 22%;
+    left: 10%;
+    transition: 0.5s;
+}
+
+.nav-block_check:checked::before {
+    transform: translateX(170%);
+    background: #5964E0;
+
+}
+
+.nav-block_switch {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-block_switch label {
+    padding-top: 5px;
+    color: #fff;
+}
+
+/* Navbar Assistant */
+
+.navbar-assistant {
+    position: absolute;
+    z-index: -1;
+}
+
+.navbar-svg-1 {
+    bottom: -1;
+    left: 0;
+}
+
+.navbar-svg-2 {
+    top: 0;
+    left: 20%;
+}
+
+.navbar-svg-3 {
+    top: 0;
+    right: 5%;
+}
+
+
+/* Icons */
+
+.m-light {
+    font-size: 20px;
+}
+
+.m-dark {
+    font-size: 18px;
+
+}
+
+/* Search Widget */
+
+.widget {
+    margin-top: -40px;
+    position: relative;
+    z-index: 3;
+}
+
+.widget-block {
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+body.dark .widget-block {
+    background: #19202D;
+}
+
+.widget-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.m-search,
+.m-location {
+    font-size: 24px;
+    color: #5964E0;
+}
+
+.widget-form_group {
+    border-right: 1px solid rgb(110, 128, 152, 0.2);
+    height: 100%;
+    width: 100%;
+    padding: 24px 32px;
+}
+
+.widget-form_group:last-child {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget-form_group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.dark label span.widget-form_check-type{
+    color: #fff;
+}
+
+.widget-form_input {
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    width: 100%;
+    color: #19202D;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+body.dark .widget-form_input {
+    color: #fff;
+}
+
+.widget-form_input:hover,
+.widget-form_input:focus {
+    border: none;
+    outline: none;
+}
+
+.widget-form_check {
+    accent-color: #5964E0;
+    width: 22px;
+    height: 22px;
+    background-color: transparent;
+}
+
+/* Jobs Section */
+.jobs {
+    padding-top: 80px;
+}
+
+.jobs-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.jobs-item {
+    width: 30%;
+    border-radius: 6px;
+    background: #FFF;
+    padding: 32px;
+    padding-top: 0;
+}
+
+body.dark .jobs-item {
+    background-color: #19202D;
+}
+
+.jobs-item_img {
+    margin-top: -22px;
+    padding-bottom: 24px;
+}
+
+.jobs-item_body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 44px;
+}
+
+.jobs-item_info {
+    color: #6E8098;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    gap: 32px;
+}
+
+.jobs-item_head {
+    color: #19202D;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+body.dark .jobs-item_head {
+    color: #6E8098;
+}
+
+.jobs-item_company {
+    color: #6E8098;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.jobs-item_location {
+    color: #5964E0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.jobs-footer {
+    padding-top: 56px;
+    display: flex;
+    justify-content: center;
+}
