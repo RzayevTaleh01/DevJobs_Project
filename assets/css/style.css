@@ -6,8 +6,17 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+}
+
 .container {
     width: 80%;
+    margin: 0 auto;
+}
+
+.container-xl {
+    width: 60%;
     margin: 0 auto;
 }
 
@@ -31,6 +40,10 @@ body.dark {
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+}
+
+.button-sm{
+    padding: 12px 33px;
 }
 
 .button-primary {
@@ -233,7 +246,6 @@ body.dark .widget-form_input {
 .jobs-block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 30px;
 }
 
@@ -441,4 +453,55 @@ body.dark .job-detail-footer_info h2 {
     color: #6E8098;
     font-size: 16px;
     font-weight: 400;
+}
+
+/* Added Page */
+
+.widget-jobs_info-add {
+    justify-content: center;
+}
+
+.widget-jobs_info-title_add {
+    padding: 15px;
+    padding-bottom: 0 !important;
+}
+
+/* Form Elements */
+
+.custom-form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+}
+
+.custom-form_input,.custom-form_select {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    height: 45px;
+    font-size: 16px;
+    padding-left: 10px;
+    background: transparent;
+}
+
+body.dark .custom-form_input,
+body.dark .custom-form_select{
+    color: #fff;
+}
+
+.custom-form_input:hover,
+.custom-form_input:focus,
+.custom-form_select:hover,
+.custom-form_select:focus {
+    outline: none;
+}
+
+body.dark .custom-form_label{
+color: #fff;
+}
+.form-footer{
+    display: flex;
+    justify-content: end;
+    padding-top: 30px;
+    gap: 10px;
 }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJobs App - MasterCode (Real World Project)</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/fonts/mastercode-icon/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-assistant navbar-svg-1">
+            <img src="./assets/img/nav-svg-1.svg" alt="">
+        </div>
+        <div class="navbar-assistant navbar-svg-2">
+            <img src="./assets/img/nav-svg-2.svg" alt="">
+        </div>
+        <div class="navbar-assistant navbar-svg-3">
+            <img src="./assets/img/nav-svg-3.svg" alt="">
+        </div>
+        <div class="container">
+            <div class="nav-block">
+                <div class="nav-block_logo">
+                    <a href="./index.html"> <img src="./assets/img/devjobs.svg" alt=""></a>
+                </div>
+                <div class="nav-block_switch">
+                    <label for="theme-check">
+                        <span class="m-light"></span>
+                    </label>
+                    <input id="theme-check" class="nav-block_check" type="checkbox">
+                    <label for="theme-check">
+                        <span class="m-dark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="widget">
+        <div class="container">
+            <div class="widget-block">
+                <div class="container-xl">
+                    <div class="widget-jobs_head widget-block_white">
+                        <div class="widget-jobs_info widget-jobs_info-add">
+                            <div class="widget-jobs_info-title widget-jobs_info-title_add">
+                                <h2>Added New Jobs</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="job-detail">
+        <div class="container-xl">
+            <div class="job-detail_block container">
+                <div class="job-detail_body">
+                   <form action="#" id="add-job-form">
+
+                    <div class="custom-form_group">
+                        <label class="custom-form_label" for="add-job-title">Job title:</label>
+                        <input id="add-job-title" placeholder="job title" class="custom-form_input" type="text">
+                    </div>
+                    <div class="custom-form_group">
+                        <label class="custom-form_label" for="add-img-url">Img Url:</label>
+                        <input id="add-img-url" placeholder="img url" class="custom-form_input" type="text">
+                    </div>
+                    <div class="custom-form_group">
+                        <label class="custom-form_label" for="add-work-type">Work Type:</label>
+                        <select class="custom-form_select" name="" id="add-work-type">
+                            <option value="#">Full Time</option>
+                            <option value="#">Part Time</option>
+
+                        </select>
+                    </div>
+                    <div class="custom-form_group">
+                        <label class="custom-form_label" for="add-job-company">Job Company:</label>
+                        <input id="add-job-company" placeholder="job company" class="custom-form_input" type="text">
+                    </div>
+                    <div class="custom-form_group">
+                        <label class="custom-form_label" for="add-job-location">Job Location:</label>
+                        <input id="add-job-location"  placeholder="job location" class="custom-form_input" type="text">
+                    </div>
+
+                    <div class="form-footer">
+                        <a href="./index.html" class="button button-sm button-primary_light">
+                            Cancel
+                        </a>
+
+                        <button type="submit" class="button button-sm button-primary">
+                            Add Job
+                        </button>
+                    </div>
+                   </form>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/add.js"></script>
+</body>
+
+</html>
