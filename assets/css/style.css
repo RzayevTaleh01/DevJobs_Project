@@ -505,3 +505,7 @@ color: #fff;
     padding-top: 30px;
     gap: 10px;
 }
+
+body.dark .empty-job{
+    color: #fff;
+}
