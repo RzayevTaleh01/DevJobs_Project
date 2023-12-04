@@ -12,13 +12,12 @@ let result = [];
 
 /*
 
-Step 2 Tasks
+Step 1 Tasks (Current)
 
-- Search functionality 
-- Inner Page
-- Add Data
-- Update Data 
-- Delete Data
+- Create Mock Data
+- Get Data from mock
+- Dynamic Search functionality 
+- Dark Mode
 
 */
 
