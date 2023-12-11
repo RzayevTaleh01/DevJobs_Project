@@ -14,12 +14,11 @@ let result = [];
 
 /*
 
-Step 2 Tasks (Current)
+Step 3 Tasks (Current)
 
-- Mock Data update  +
-- Search functionality and empty message +
-- Inner Page +
-- Add Data
+- Find Page Data 
+- Add Data 
+- Update Data
 
 */
 
