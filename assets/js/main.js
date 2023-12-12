@@ -11,189 +11,31 @@ const searchForm = document.querySelector('#search_form');
 
 let result = [];
 
+let addForm = document.querySelector('#add-job-form');
+let addJobId = document.querySelector('#add-job-id');
+let addJobTitle = document.querySelector('#add-job-title');
+let addImgUrl = document.querySelector('#add-img-url');
+let addWorkType = document.querySelector('#add-work-type');
+let addJobCompany = document.querySelector('#add-job-company');
+let addJobLocation = document.querySelector('#add-job-location');
+
+
+
+
+
 
 /*
 
-Step 2 Tasks (Current)
+Step 3 Tasks (Current)
 
-- Mock Data update  +
-- Search functionality and empty message +
-- Inner Page +
-- Add Data
+- Current Url
+- Find Page Data 
+- Add Data 
+- edit Data
 
 */
 
-window.onload = function () {
-    let pageTheme = localStorage.getItem('theme');
-    if (pageTheme == 'dark') {
-        body.classList.add('dark')
-        theme.checked = true;
-    }
-    else {
-        body.classList.remove('dark')
-    }
-    getData(data);
-}
-
-const data = [
-    {
-        id: '1',
-        title: 'Software Engineer',
-        img: './assets/img/jobs-1.svg',
-        time: '5h ago',
-        workType: 'Part Time',
-        company: 'Scoot',//data[0].company
-        location: 'Canada',
-        innerData: {
-            jobLogo: '/assets/img/company-logo.svg',
-            jobUrl: 'scoot.com',
-            info: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.',
-            requirement: {
-                info: 'Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.',
-                list: [
-                    {
-                        id: 1,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 2,
-                        text: 'Sunt fuga repellendus incidunt modi.'
-                    },
-                    {
-                        id: 3,
-                        text: 'Accusantium rem mollitia laudantium magnam.'
-                    },
-                    {
-                        id: 4,
-                        text: 'Quis harum debitis sunt fugit.'
-                    }
-
-                ]
-            },
-
-            whatYouWillDo: {
-                info: 'Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.',
-                list: [
-                    {
-                        id: 1,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 2,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 3,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 4,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    }
-                ]
-            }
-        }
-    },
-    {
-        id: '2',
-        title: 'Senior Software Engineer 1',
-        img: './assets/img/jobs-1.svg',
-        time: '5h ago',
-        workType: 'Part Time',
-        company: 'Scoot',
-        location: 'Canada',
-        innerData: {
-            jobLogo: '/assets/img/company-logo.svg',
-            jobUrl: 'scoot.com',
-            info: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.',
-            requirement: {
-                info: 'Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.',
-                list: [
-                    {
-                        id: 1,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 2,
-                        text: 'Sunt fuga repellendus incidunt modi.'
-                    },
-                    {
-                        id: 3,
-                        text: 'Accusantium rem mollitia laudantium magnam.'
-                    },
-                    {
-                        id: 4,
-                        text: 'Quis harum debitis sunt fugit.'
-                    }
-
-                ]
-            },
-
-            whatYouWillDo: {
-                info: 'Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.',
-                list: [
-                    {
-                        id: 1,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 2,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 3,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    },
-                    {
-                        id: 4,
-                        text: 'Lorem ipsum dolor sit amet.'
-                    }
-                ]
-            }
-        }
-    },
-    {
-        id: '3',
-        title: 'Senior Software Engineer 2',
-        img: './assets/img/jobs-1.svg',
-        time: '5h ago',
-        workType: 'Full Time',
-        company: 'Scoot',
-        location: 'United Kingdom'
-    },
-    {
-        id: '13',
-        title: 'Senior Software Engineer 2',
-        img: './assets/img/jobs-1.svg',
-        time: '5h ago',
-        workType: 'Full Time',
-        company: 'Scoot',
-        location: 'United Kingdom'
-    },
-    {
-        id: '113',
-        title: 'Senior Software Engineer 2',
-        img: './assets/img/jobs-1.svg',
-        time: '5h ago',
-        workType: 'Full Time',
-        company: 'Scoot',
-        location: 'United Kingdom'
-    },
-]
-
-let urlParams = new URLSearchParams(window.location.search);
-
-let id = urlParams.get('id');//113
-
-console.log(id);
-
-
-let findById = data.find((item)=>{
-    return item.id==id;
-})
-
-generateInnerPage(findById)
-
+let data=[]
 
 
 function getData(a) {
@@ -219,6 +61,7 @@ function getData(a) {
         </div>
         <div class="jobs-item_footer">
             <p class="jobs-item_location">${item.location}</p>
+            <a href="/edit.html?id=${item.id}" class="jobs-item_location">Edit</a>
         </div>
     </div>
         `
@@ -227,6 +70,110 @@ function getData(a) {
     jobsBlock.innerHTML = dataHtml;
 
 }
+
+
+
+let jobsData = localStorage.getItem('jobsData');
+
+let mainData = [];
+
+if(jobsData){
+    try{
+        mainData = JSON.parse(jobsData);
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+data = mainData;
+
+
+let page = getCurrentUrl();
+
+function getDatabyId(id,data){
+    return data.find((item)=>{
+        return item.id==id
+    })
+}
+
+
+
+if(page.pageName=='index.html') {
+    getData(data) 
+}
+
+
+if(page.pageName=='edit.html'){
+
+    let editData = getDatabyId(page.id,data);
+
+    addJobId.value = editData.id
+    addJobTitle.value = editData.title,
+    addImgUrl.value = editData.img
+   addWorkType.value=editData.workType
+
+   console.log(editData);
+
+
+
+}
+
+
+window.onload = function () {
+    let pageTheme = localStorage.getItem('theme');
+    if (pageTheme == 'dark') {
+        body.classList.add('dark')
+        theme.checked = true;
+    }
+    else {
+        body.classList.remove('dark')
+    }
+    getData(data);
+}
+
+
+
+
+addForm?.addEventListener('submit',(e)=>{
+
+    e.preventDefault();
+
+    const newData = {
+            id: addJobId.value,
+            title: addJobTitle.value,
+            img: addImgUrl.value,
+            time: '5h ago',
+            workType: addWorkType.value,
+            company: addJobCompany.value,
+            location: addJobLocation.value
+    }
+
+    data.push(newData);
+
+    localStorage.setItem('jobsData',JSON.stringify(data))
+
+    alert('added data')
+
+    window.location.href="/index.html";
+
+
+    console.log(data);
+})
+
+
+function getCurrentUrl(){
+    let urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get('id');
+
+    let pageName = window.location.pathname.split('/').pop();
+
+    return {
+        id: id,
+        pageName: pageName
+    }
+}
+
 
 function generateInnerPage(a){
     console.log(a);
@@ -265,5 +212,3 @@ searchForm.addEventListener('submit', (e) => {
     }
     result.length <= 0 ? jobsBlock.innerHTML = '<p class="empty-job">No Result...</p>' : getData(result);
 })
-
-
