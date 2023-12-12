@@ -35,8 +35,7 @@ Step 3 Tasks (Current)
 
 */
 
-let data=[
-]
+let data=[]
 
 
 function getData(a) {
@@ -62,6 +61,7 @@ function getData(a) {
         </div>
         <div class="jobs-item_footer">
             <p class="jobs-item_location">${item.location}</p>
+            <a href="/edit.html?id=${item.id}" class="jobs-item_location">Edit</a>
         </div>
     </div>
         `
@@ -91,8 +91,32 @@ data = mainData;
 
 let page = getCurrentUrl();
 
+function getDatabyId(id,data){
+    return data.find((item)=>{
+        return item.id==id
+    })
+}
+
+
+
 if(page.pageName=='index.html') {
     getData(data) 
+}
+
+
+if(page.pageName=='edit.html'){
+
+    let editData = getDatabyId(page.id,data);
+
+    addJobId.value = editData.id
+    addJobTitle.value = editData.title,
+    addImgUrl.value = editData.img
+   addWorkType.value=editData.workType
+
+   console.log(editData);
+
+
+
 }
 
 
@@ -151,7 +175,6 @@ function getCurrentUrl(){
 }
 
 
-
 function generateInnerPage(a){
     console.log(a);
 }
@@ -189,8 +212,3 @@ searchForm.addEventListener('submit', (e) => {
     }
     result.length <= 0 ? jobsBlock.innerHTML = '<p class="empty-job">No Result...</p>' : getData(result);
 })
-
-
-
-
-

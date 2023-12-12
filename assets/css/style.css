@@ -509,3 +509,8 @@ color: #fff;
 body.dark .empty-job{
     color: #fff;
 }
+
+.jobs-item_footer{
+    display: flex;
+    justify-content: space-between;
+}
