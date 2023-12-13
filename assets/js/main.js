@@ -26,12 +26,11 @@ let addJobLocation = document.querySelector('#add-job-location');
 
 /*
 
-Step 3 Tasks (Current)
+Step 4 Tasks (Current)
 
-- Current Url
-- Find Page Data 
-- Add Data 
-- edit Data
+- Edit
+- Delete
+- Full optimize
 
 */
 
