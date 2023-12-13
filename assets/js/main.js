@@ -26,9 +26,6 @@ let addJobLocation = document.querySelector('#add-job-location');
 
 
 
-
-
-
 /*
 
 Step 4 Tasks (Current)
@@ -41,6 +38,19 @@ Step 4 Tasks (Current)
 
 let data = []
 let page = getCurrentUrl();
+
+let jobsData = localStorage.getItem('jobsData');
+
+
+if (jobsData) {
+    try {
+        data = JSON.parse(jobsData);
+    }
+    catch (err) {
+        console.error(err);
+    }
+}
+
 
 
 
@@ -78,29 +88,47 @@ function getData(a) {
 
 }
 
-
-
-let jobsData = localStorage.getItem('jobsData');
-
-let mainData = [];
-
-if (jobsData) {
-    try {
-        mainData = JSON.parse(jobsData);
-    }
-    catch (err) {
-        console.error(err);
-    }
-}
-
-data = mainData;
-
-
-
 function getDatabyId(id, data) {
     return data.find((item) => {
         return item.id == id
     })
+}
+
+function getCurrentUrl() {
+    let urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get('id');
+
+    let pageName = window.location.pathname.split('/').pop();
+
+    return {
+        id: id,
+        pageName: pageName
+    }
+}
+
+function generateInnerPage(a) {
+    console.log(a);
+}
+
+function search(searchTerm, key, data) {
+    searchTerm = searchTerm.toLowerCase();
+    const filteredData = data.filter((item) => {
+        const currentItemValue = item[key].toLowerCase();
+        return currentItemValue.includes(searchTerm);
+    })
+    return filteredData;
+}
+
+window.onload = function () {
+    let pageTheme = localStorage.getItem('theme');
+    if (pageTheme == 'dark') {
+        body.classList.add('dark')
+        theme.checked = true;
+    }
+    else {
+        body.classList.remove('dark')
+    }
+    getData(data);
 }
 
 
@@ -111,14 +139,30 @@ if (page.pageName == 'index.html') {
 
     function deleteJob (id){
         event.preventDefault();
-        console.log(id);
+
+        // let jobIndex = data.findIndex((item)=> item.id == id);
+
+        // if(jobIndex !== -1){
+        //     beforeData = [...data];
+        //     beforeData.splice(jobIndex,1)
+
+        //     localStorage.setItem('jobsData',JSON.stringify(beforeData))
+        //     getData(beforeData)
+        // }
+
+
+
+        let newData = data.filter(item=> item.id != id);
+
+        console.log(data);
+
+        console.log(newData);
+
+        getData(newData);
+        localStorage.setItem('jobsData',JSON.stringify(newData));
+
     }
-
-
 }
-
-console.log(data);
-
 
 if (page.pageName == 'edit.html') {
 
@@ -172,22 +216,6 @@ if (page.pageName == 'edit.html') {
     })
 }
 
-
-window.onload = function () {
-    let pageTheme = localStorage.getItem('theme');
-    if (pageTheme == 'dark') {
-        body.classList.add('dark')
-        theme.checked = true;
-    }
-    else {
-        body.classList.remove('dark')
-    }
-    getData(data);
-}
-
-
-
-
 addForm?.addEventListener('submit', (e) => {
 
     e.preventDefault();
@@ -215,23 +243,7 @@ addForm?.addEventListener('submit', (e) => {
 })
 
 
-function getCurrentUrl() {
-    let urlParams = new URLSearchParams(window.location.search);
-    let id = urlParams.get('id');
-
-    let pageName = window.location.pathname.split('/').pop();
-
-    return {
-        id: id,
-        pageName: pageName
-    }
-}
-
-
-function generateInnerPage(a) {
-    console.log(a);
-}
-theme.addEventListener('click', (e) => {
+theme?.addEventListener('click', (e) => {
     if (e.target.checked) {
         localStorage.setItem('theme', 'dark')
     }
@@ -242,19 +254,7 @@ theme.addEventListener('click', (e) => {
     body.classList.toggle('dark');
 })
 
-
-
-function search(searchTerm, key, data) {
-    searchTerm = searchTerm.toLowerCase();
-    const filteredData = data.filter((item) => {
-        const currentItemValue = item[key].toLowerCase();
-        return currentItemValue.includes(searchTerm);
-    })
-    return filteredData;
-}
-
-
-searchForm.addEventListener('submit', (e) => {
+searchForm?.addEventListener('submit', (e) => {
     e.preventDefault();
 
     result = search(jobsTitle.value, 'title', data);//4
