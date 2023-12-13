@@ -12,6 +12,11 @@ const searchForm = document.querySelector('#search_form');
 let result = [];
 
 let addForm = document.querySelector('#add-job-form');
+let editForm = document.querySelector('#edit-job-form');
+
+
+
+
 let addJobId = document.querySelector('#add-job-id');
 let addJobTitle = document.querySelector('#add-job-title');
 let addImgUrl = document.querySelector('#add-img-url');
@@ -34,7 +39,9 @@ Step 4 Tasks (Current)
 
 */
 
-let data=[]
+let data = []
+let page = getCurrentUrl();
+
 
 
 function getData(a) {
@@ -60,7 +67,8 @@ function getData(a) {
         </div>
         <div class="jobs-item_footer">
             <p class="jobs-item_location">${item.location}</p>
-            <a href="/edit.html?id=${item.id}" class="jobs-item_location">Edit</a>
+            <a href="/edit.html?id=${item.id}"  class="jobs-item_location">Edit</a>
+            <a href='#' onClick='deleteJob(${item.id})' class="jobs-item_location">Delete</a>
         </div>
     </div>
         `
@@ -76,11 +84,11 @@ let jobsData = localStorage.getItem('jobsData');
 
 let mainData = [];
 
-if(jobsData){
-    try{
+if (jobsData) {
+    try {
         mainData = JSON.parse(jobsData);
     }
-    catch(err){
+    catch (err) {
         console.error(err);
     }
 }
@@ -88,34 +96,80 @@ if(jobsData){
 data = mainData;
 
 
-let page = getCurrentUrl();
 
-function getDatabyId(id,data){
-    return data.find((item)=>{
-        return item.id==id
+function getDatabyId(id, data) {
+    return data.find((item) => {
+        return item.id == id
     })
 }
 
 
 
-if(page.pageName=='index.html') {
-    getData(data) 
+if (page.pageName == 'index.html') {
+    getData(data)
+
+
+    function deleteJob (id){
+        event.preventDefault();
+        console.log(id);
+    }
+
+
 }
 
+console.log(data);
 
-if(page.pageName=='edit.html'){
 
-    let editData = getDatabyId(page.id,data);
+if (page.pageName == 'edit.html') {
+
+    let editData = getDatabyId(page.id, data);
+
+    // show input value
 
     addJobId.value = editData.id
     addJobTitle.value = editData.title,
     addImgUrl.value = editData.img
-   addWorkType.value=editData.workType
+    addWorkType.value = editData.workType;
+    addJobCompany.value = editData.company;
+    addJobLocation.value = editData.location;
 
-   console.log(editData);
+    //Edit 
 
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
+        const newData = {
+            id: addJobId.value,
+            title: addJobTitle.value,
+            img: addImgUrl.value,
+            time: '5h ago',
+            workType: addWorkType.value,
+            company: addJobCompany.value,
+            location: addJobLocation.value
+        }
 
+        let updateData = data.map(item => {
+            if (item.id == page.id) {
+                return {
+                    ...item,
+                    ...newData
+                }
+            }
+            else {
+                return item;
+            }
+        })
+
+        console.log(updateData);
+
+        localStorage.setItem('jobsData',JSON.stringify(updateData))
+
+        alert('Data Editded');
+
+        window.location.href='/index.html'
+        
+
+    })
 }
 
 
@@ -134,34 +188,34 @@ window.onload = function () {
 
 
 
-addForm?.addEventListener('submit',(e)=>{
+addForm?.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
     const newData = {
-            id: addJobId.value,
-            title: addJobTitle.value,
-            img: addImgUrl.value,
-            time: '5h ago',
-            workType: addWorkType.value,
-            company: addJobCompany.value,
-            location: addJobLocation.value
+        id: addJobId.value,
+        title: addJobTitle.value,
+        img: addImgUrl.value,
+        time: '5h ago',
+        workType: addWorkType.value,
+        company: addJobCompany.value,
+        location: addJobLocation.value
     }
 
     data.push(newData);
 
-    localStorage.setItem('jobsData',JSON.stringify(data))
+    localStorage.setItem('jobsData', JSON.stringify(data))
 
     alert('added data')
 
-    window.location.href="/index.html";
+    window.location.href = "/index.html";
 
 
     console.log(data);
 })
 
 
-function getCurrentUrl(){
+function getCurrentUrl() {
     let urlParams = new URLSearchParams(window.location.search);
     let id = urlParams.get('id');
 
@@ -174,7 +228,7 @@ function getCurrentUrl(){
 }
 
 
-function generateInnerPage(a){
+function generateInnerPage(a) {
     console.log(a);
 }
 theme.addEventListener('click', (e) => {
