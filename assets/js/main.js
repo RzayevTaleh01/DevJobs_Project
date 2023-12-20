@@ -13,6 +13,8 @@ let result = [];
 
 let addForm = document.querySelector('#add-job-form');
 let editForm = document.querySelector('#edit-job-form');
+let addJobBtn = document.querySelector('#add-job-btn');
+
 
 
 
@@ -50,9 +52,6 @@ if (jobsData) {
         console.error(err);
     }
 }
-
-
-
 
 function getData(a) {
     let dataHtml = '';
@@ -128,10 +127,7 @@ window.onload = function () {
     else {
         body.classList.remove('dark')
     }
-    getData(data);
 }
-
-
 
 if (page.pageName == 'index.html') {
     getData(data)
@@ -216,7 +212,35 @@ if (page.pageName == 'edit.html') {
     })
 }
 
-addForm?.addEventListener('submit', (e) => {
+function checkEmptyFields(data,requiredFields) {
+    const emptyFields = [];
+  
+    for (const field of requiredFields) {
+      if (!data[field]) {
+        emptyFields.push(field);
+      }
+    }
+  
+    return emptyFields;
+}
+
+if(page.pageName == 'add.html'){
+    
+
+    addJobId.addEventListener('change',(e)=>{
+
+        if(getDatabyId(e.target.value,data)){
+            alert("Bu Id mövcuddur");
+            addJobBtn.disabled = true;
+        }
+        else{
+            addJobBtn.disabled = false;
+        }   
+        
+    
+    })
+
+    addForm?.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
@@ -230,17 +254,24 @@ addForm?.addEventListener('submit', (e) => {
         location: addJobLocation.value
     }
 
-    data.push(newData);
-
-    localStorage.setItem('jobsData', JSON.stringify(data))
-
-    alert('added data')
-
-    window.location.href = "/index.html";
-
-
     console.log(data);
+
+    const requiredFields = ['id', 'title','time','location','company'];
+
+    const emptyFields = checkEmptyFields(newData,requiredFields);
+
+    if (emptyFields.length > 0) {
+      alert(`Bu xanaları doldurun: ${emptyFields.join(', ')}`);
+    } else {
+        data.push(newData);
+        localStorage.setItem('jobsData', JSON.stringify(data))
+        alert('added data')
+        window.location.href = "/index.html";
+    }
 })
+}
+
+
 
 
 theme?.addEventListener('click', (e) => {
