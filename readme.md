@@ -3,16 +3,8 @@
 This project, named DevJobs App, is a job board application written in JavaScript. The application allows users to manage job listings, supporting features such as adding, editing, deleting, and searching for jobs. The application also includes a dark theme for a personalized user experience.
 <br>
 
-## Technologies Used
 
-The DevJobs App, developed by Taleh Rzayev, utilizes the following technologies:
 
-- **HTML**
-- **CSS**
-- **JavaScript**
-- **Local Storage**
-
-<br>
 
 ## Getting Started
 
@@ -24,6 +16,16 @@ To use the application, open the `index.html` file in a web browser. The primary
 - Adding a new job posting.
 <br>
 
+## Technologies Used
+
+The DevJobs App, developed by Taleh Rzayev, utilizes the following technologies:
+
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **Local Storage**
+
+<br>
 
 ## Code Overview
 
