@@ -160,7 +160,7 @@ if (page.pageName == 'index.html') {
     }
 }
 
-if (page.pageName == 'edit.html') {
+if (page.pageName == 'edit.html' || page.pageName == 'edit') {
 
     let editData = getDatabyId(page.id, data);
 
@@ -224,7 +224,7 @@ function checkEmptyFields(data,requiredFields) {
     return emptyFields;
 }
 
-if(page.pageName == 'add.html'){
+if(page.pageName == 'add.html' || page.pageName == 'add'){
     
 
     addJobId.addEventListener('change',(e)=>{
